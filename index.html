@@ -2,11 +2,12 @@
 <html lang="es">
 <head>
   <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>La Saga Vuelve — Playlist Oficial</title>
-  <meta name="description" content="Guardá la playlist oficial del show en vivo de La Saga para enterarte antes que nadie cuando anunciemos fecha y tickets." />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Meta Pixel (opcional - si ya lo tenés) -->
+  <title>La Saga Vuelve — Playlist Oficial</title>
+  <meta name="description" content="Guardá la playlist oficial del show en vivo de La Saga y enterate antes que nadie cuando anunciemos fecha y tickets." />
+
+  <!-- ================= META PIXEL ================= -->
   <!-- Reemplazá PIXEL_ID por tu ID real -->
   <script>
     !function(f,b,e,v,n,t,s)
@@ -20,10 +21,12 @@
     fbq('init','PIXEL_ID');
     fbq('track','PageView');
   </script>
+
   <noscript>
     <img height="1" width="1" style="display:none"
       src="https://www.facebook.com/tr?id=PIXEL_ID&ev=PageView&noscript=1"/>
   </noscript>
+  <!-- ============================================== -->
 
   <style>
     :root{
@@ -35,112 +38,125 @@
       --btn:#f59e0b;
       --btnText:#111827;
     }
+
     *{box-sizing:border-box}
+
     body{
       margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      color:var(--text);
       min-height:100vh;
       display:flex;
       align-items:center;
       justify-content:center;
       padding:24px;
-      background: radial-gradient(1200px 600px at 20% 10%, rgba(245,158,11,.25), transparent 60%),
-                  radial-gradient(900px 500px at 80% 20%, rgba(239,68,68,.25), transparent 55%),
-                  linear-gradient(135deg, var(--bg1), var(--bg2));
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 20% 10%, rgba(245,158,11,.25), transparent 60%),
+        radial-gradient(900px 500px at 80% 20%, rgba(239,68,68,.25), transparent 55%),
+        linear-gradient(135deg, var(--bg1), var(--bg2));
     }
+
     .wrap{
       width:min(980px, 100%);
-      background: var(--card);
+      background:var(--card);
       backdrop-filter: blur(10px);
       border:1px solid rgba(255,255,255,.12);
       border-radius:22px;
+      box-shadow:0 18px 60px rgba(0,0,0,.45);
       overflow:hidden;
-      box-shadow: 0 18px 60px rgba(0,0,0,.45);
     }
+
     .inner{
       display:grid;
       grid-template-columns: 1fr 1.2fr;
-      gap:22px;
+      gap:24px;
       padding:28px;
       align-items:center;
     }
+
     @media (max-width: 860px){
-      .inner{grid-template-columns:1fr; padding:20px}
+      .inner{
+        grid-template-columns:1fr;
+        padding:20px;
+      }
     }
+
     .img{
-      width:100%;
+      aspect-ratio:1/1;
       border-radius:18px;
       border:1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.2);
       overflow:hidden;
-      aspect-ratio: 1 / 1;
-      display:flex;
-      align-items:center;
-      justify-content:center;
+      background:#000;
     }
+
     .img img{
       width:100%;
       height:100%;
       object-fit:cover;
       display:block;
     }
+
     .kicker{
-      display:inline-flex;
-      gap:10px;
-      align-items:center;
-      font-size:14px;
-      letter-spacing:.12em;
+      font-size:13px;
+      letter-spacing:.14em;
       text-transform:uppercase;
       color:var(--muted);
       margin-bottom:10px;
     }
+
     h1{
-      margin:0 0 10px 0;
-      font-size: clamp(28px, 3.2vw, 44px);
+      margin:0 0 12px 0;
+      font-size:clamp(28px, 3.2vw, 44px);
       line-height:1.05;
     }
+
     p{
       margin:0 0 18px 0;
       color:var(--muted);
-      font-size: 16px;
+      font-size:16px;
       line-height:1.5;
     }
+
     .btn{
       display:inline-flex;
       align-items:center;
-      justify-content:center;
       gap:10px;
       padding:14px 18px;
       border-radius:14px;
       font-weight:800;
       text-decoration:none;
-      background: var(--btn);
-      color: var(--btnText);
+      background:var(--btn);
+      color:var(--btnText);
       border:1px solid rgba(0,0,0,.2);
-      width:fit-content;
-      transition: transform .08s ease;
+      transition:transform .08s ease;
     }
-    .btn:active{transform: translateY(1px)}
+
+    .btn:active{transform:translateY(1px)}
+
     .small{
       margin-top:14px;
       font-size:13px;
-      color: rgba(203,213,225,.9);
+      color:rgba(203,213,225,.9);
     }
   </style>
 </head>
 
 <body>
+
   <main class="wrap">
     <section class="inner">
+
+      <!-- IMAGEN -->
       <div class="img">
-        <!-- Imagen en la raíz del repo -->
-        <img src="./saga-vuelve.png" alt="La Saga Vuelve" />
+        <img src="./saga-vuelve.png" alt="La Saga Vuelve">
       </div>
 
+      <!-- TEXTO -->
       <div>
         <div class="kicker">Todavía no hay fecha ni tickets</div>
+
         <h1>Playlist oficial del show en vivo</h1>
+
         <p>
           Acá tenés la lista oficial de canciones para el próximo show de La Saga.
           Guardala en Spotify para ser el primero en enterarte cuando anunciemos la fecha
@@ -158,7 +174,9 @@
           Si no tenés Spotify logueado, te va a pedir iniciar sesión.
         </div>
       </div>
+
     </section>
   </main>
+
 </body>
 </html>
