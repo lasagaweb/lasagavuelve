@@ -8,8 +8,7 @@
   <meta name="description" content="Seguí la playlist oficial del show en vivo de La Saga." />
   <meta name="theme-color" content="#0b0f14" />
 
-  <!-- Open Graph (para compartir)
-       Reemplazá TU-DOMINIO por la URL real (GitHub Pages o dominio propio). -->
+  <!-- Open Graph -->
   <meta property="og:title" content="La Saga Vuelve — Playlist oficial" />
   <meta property="og:description" content="Seguí la playlist oficial del show en vivo de La Saga." />
   <meta property="og:type" content="website" />
@@ -29,16 +28,16 @@
     fbq('init','1871916290382511');
     fbq('track','PageView');
 
-    // Evento custom para optimizar campañas por click a Spotify
     function trackSpotifyPlaylistClick() {
       try {
-        fbq('trackCustom', 'SpotifyPlaylistClick', {
-          asset_type: 'playlist',
-          asset_id: '1ylnFl2AbyTPG9ppzfTzxa'
+        fbq('trackCustom','SpotifyPlaylistClick',{
+          asset_type:'playlist',
+          asset_id:'1ylnFl2AbyTPG9ppzfTzxa'
         });
-      } catch (e) {}
+      } catch(e){}
     }
   </script>
+
   <noscript>
     <img height="1" width="1" style="display:none"
          src="https://www.facebook.com/tr?id=1871916290382511&ev=PageView&noscript=1"/>
@@ -107,9 +106,6 @@
       display:block;
     }
     .kicker{
-      display:inline-flex;
-      gap:10px;
-      align-items:center;
       font-size:14px;
       letter-spacing:.12em;
       text-transform:uppercase;
@@ -117,22 +113,21 @@
       margin-bottom:10px;
     }
     h1{
-      margin:0 0 10px 0;
+      margin:0 0 12px 0;
       font-size: clamp(30px, 3.3vw, 46px);
       line-height:1.05;
     }
     p{
-      margin:0 0 18px 0;
+      margin:0 0 20px 0;
       color:var(--muted);
-      font-size: 16px;
+      font-size:16px;
       line-height:1.5;
-      max-width: 56ch;
+      max-width: 58ch;
     }
     .btn{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap:10px;
       padding:14px 18px;
       border-radius:14px;
       font-weight:900;
@@ -145,16 +140,6 @@
     }
     .btn:hover{filter: brightness(1.03)}
     .btn:active{transform: translateY(1px)}
-    .foot{
-      margin-top:18px;
-      font-size:12px;
-      color: rgba(203,213,225,.65);
-    }
-    .foot a{
-      color: rgba(203,213,225,.7);
-      text-decoration: underline;
-      text-underline-offset: 3px;
-    }
   </style>
 </head>
 
@@ -173,20 +158,18 @@
 
         <h1>Playlist oficial del show en vivo</h1>
 
-        <p>La estamos armando para el próximo show de La Saga.</p>
+        <p>
+          Esta es la lista de canciones que estamos armando para el próximo show.
+          Seguí la playlist y, si te copa, sumá algún tema a una playlist tuya.
+          La iremos ajustando de cara a la vuelta.
+        </p>
 
         <a class="btn"
            href="https://open.spotify.com/playlist/1ylnFl2AbyTPG9ppzfTzxa?utm_source=meta&utm_medium=paid_social&utm_campaign=la_saga_vuelve_playlist"
            target="_blank" rel="noopener"
-           onclick="trackSpotifyPlaylistClick()"
-           aria-label="Seguir la playlist oficial de La Saga en Spotify (se abre en una nueva pestaña)">
+           onclick="trackSpotifyPlaylistClick()">
           Seguir la playlist en Spotify →
         </a>
-
-        <!-- Footer mínimo (opcional). Si no tenés privacy.html, podés borrar este bloque. -->
-        <div class="foot">
-          <a href="./privacy.html">Privacidad</a>
-        </div>
       </div>
     </section>
   </main>
