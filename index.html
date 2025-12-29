@@ -3,8 +3,17 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>La Saga Vuelve — Playlist Oficial</title>
-  <meta name="description" content="Guardá la playlist oficial del show en vivo de La Saga para enterarte antes que nadie cuando anunciemos fecha y tickets." />
+  <title>La Saga Vuelve — Playlist oficial</title>
+
+  <meta name="description" content="Seguí la playlist oficial del show en vivo de La Saga. La vamos actualizando de cara al anuncio de fecha y tickets." />
+  <meta name="theme-color" content="#0b0f14" />
+
+  <!-- Open Graph (para que se vea bien al compartir)
+       IMPORTANTE: reemplazá TU-DOMINIO por la URL real (OG requiere URL absoluta). -->
+  <meta property="og:title" content="La Saga Vuelve — Playlist oficial" />
+  <meta property="og:description" content="Seguí la playlist oficial. La vamos actualizando de cara al anuncio de fecha y tickets." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://TU-DOMINIO/saga-vuelve.png" />
 
   <!-- Meta Pixel -->
   <script>
@@ -16,12 +25,23 @@
     t.src=v;s=b.getElementsByTagName(e)[0];
     s.parentNode.insertBefore(t,s)}(window, document,'script',
     'https://connect.facebook.net/en_US/fbevents.js');
+
     fbq('init','1871916290382511');
     fbq('track','PageView');
+
+    // Evento custom: usalo para optimizar campañas por "click a Spotify"
+    function trackSpotifyPlaylistClick() {
+      try {
+        fbq('trackCustom', 'SpotifyPlaylistClick', {
+          asset_type: 'playlist',
+          asset_id: '1ylnFl2AbyTPG9ppzfTzxa'
+        });
+      } catch (e) {}
+    }
   </script>
   <noscript>
     <img height="1" width="1" style="display:none"
-      src="https://www.facebook.com/tr?id=1871916290382511&ev=PageView&noscript=1"/>
+         src="https://www.facebook.com/tr?id=1871916290382511&ev=PageView&noscript=1"/>
   </noscript>
 
   <style>
@@ -33,6 +53,7 @@
       --muted:#cbd5e1;
       --btn:#f59e0b;
       --btnText:#111827;
+      --border: rgba(255,255,255,.12);
     }
     *{box-sizing:border-box}
     body{
@@ -53,7 +74,7 @@
       width:min(980px, 100%);
       background: var(--card);
       backdrop-filter: blur(10px);
-      border:1px solid rgba(255,255,255,.12);
+      border:1px solid var(--border);
       border-radius:22px;
       overflow:hidden;
       box-shadow: 0 18px 60px rgba(0,0,0,.45);
@@ -71,7 +92,7 @@
     .img{
       width:100%;
       border-radius:18px;
-      border:1px solid rgba(255,255,255,.12);
+      border:1px solid var(--border);
       background: rgba(0,0,0,.2);
       overflow:hidden;
       aspect-ratio: 1 / 1;
@@ -113,19 +134,37 @@
       gap:10px;
       padding:14px 18px;
       border-radius:14px;
-      font-weight:800;
+      font-weight:900;
       text-decoration:none;
       background: var(--btn);
       color: var(--btnText);
       border:1px solid rgba(0,0,0,.2);
       width:fit-content;
-      transition: transform .08s ease;
+      transition: transform .08s ease, filter .12s ease;
     }
+    .btn:hover{filter: brightness(1.03)}
     .btn:active{transform: translateY(1px)}
     .small{
       margin-top:14px;
       font-size:13px;
-      color: rgba(203,213,225,.9);
+      color: rgba(203,213,225,.92);
+      line-height:1.45;
+    }
+    .small a{
+      color: rgba(203,213,225,.95);
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+    .tip{
+      margin-top:10px;
+      padding:12px 14px;
+      border-radius:14px;
+      border:1px solid var(--border);
+      background: rgba(0,0,0,.18);
+      color: rgba(203,213,225,.95);
+      font-size: 14px;
+      line-height:1.45;
+      max-width: 56ch;
     }
   </style>
 </head>
@@ -135,27 +174,39 @@
     <section class="inner">
       <div class="img">
         <!-- Imagen en la raíz del repo -->
-        <img src="./saga-vuelve.png" alt="La Saga Vuelve" />
+        <img src="./saga-vuelve.png"
+             alt="La Saga Vuelve"
+             width="1200" height="1200"
+             loading="eager" />
       </div>
 
       <div>
         <div class="kicker">Todavía no hay fecha ni tickets</div>
+
         <h1>Playlist oficial del show en vivo</h1>
+
         <p>
-          Acá tenés la lista oficial de canciones para el próximo show de La Saga.
-          Guardala en Spotify para ser el primero en enterarte cuando anunciemos la fecha
-          y la disponibilidad de los tickets.
+          Seguí la playlist oficial de La Saga: es la lista de canciones que estamos armando para el próximo show.
+          La vamos actualizando de cara al anuncio de fecha y tickets.
         </p>
 
         <a class="btn"
-           href="https://open.spotify.com/playlist/1ylnFl2AbyTPG9ppzfTzxa"
+           href="https://open.spotify.com/playlist/1ylnFl2AbyTPG9ppzfTzxa?utm_source=meta&utm_medium=paid_social&utm_campaign=la_saga_vuelve_playlist"
            target="_blank" rel="noopener"
-           onclick="try{fbq('track','Lead');}catch(e){}">
-          Guardá la playlist en Spotify →
+           onclick="trackSpotifyPlaylistClick()"
+           aria-label="Seguir la playlist oficial de La Saga en Spotify (se abre en una nueva pestaña)">
+          Seguir la playlist en Spotify →
         </a>
 
+        <div class="tip">
+          Tip: si te copa, además de seguirla podés sumar 1–2 temas a una playlist tuya.
+          Suele ser una señal fuerte de afinidad dentro de Spotify.
+        </div>
+
         <div class="small">
-          Si no tenés Spotify logueado, te va a pedir iniciar sesión.
+          Si no tenés Spotify abierto o logueado, puede pedirte iniciar sesión.<br/>
+          <!-- Opcional: enlazá a una política de privacidad simple, por el Pixel -->
+          <a href="./privacy.html">Privacidad</a>
         </div>
       </div>
     </section>
