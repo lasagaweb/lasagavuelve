@@ -5,13 +5,13 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>La Saga Vuelve — Playlist oficial</title>
 
-  <meta name="description" content="Seguí la playlist oficial del show en vivo de La Saga. La vamos actualizando de cara al anuncio de fecha y tickets." />
+  <meta name="description" content="Seguí la playlist oficial del show en vivo de La Saga." />
   <meta name="theme-color" content="#0b0f14" />
 
-  <!-- Open Graph (para que se vea bien al compartir)
-       IMPORTANTE: reemplazá TU-DOMINIO por la URL real (OG requiere URL absoluta). -->
+  <!-- Open Graph (para compartir)
+       Reemplazá TU-DOMINIO por la URL real (GitHub Pages o dominio propio). -->
   <meta property="og:title" content="La Saga Vuelve — Playlist oficial" />
-  <meta property="og:description" content="Seguí la playlist oficial. La vamos actualizando de cara al anuncio de fecha y tickets." />
+  <meta property="og:description" content="Seguí la playlist oficial del show en vivo de La Saga." />
   <meta property="og:type" content="website" />
   <meta property="og:image" content="https://TU-DOMINIO/saga-vuelve.png" />
 
@@ -29,7 +29,7 @@
     fbq('init','1871916290382511');
     fbq('track','PageView');
 
-    // Evento custom: usalo para optimizar campañas por "click a Spotify"
+    // Evento custom para optimizar campañas por click a Spotify
     function trackSpotifyPlaylistClick() {
       try {
         fbq('trackCustom', 'SpotifyPlaylistClick', {
@@ -118,7 +118,7 @@
     }
     h1{
       margin:0 0 10px 0;
-      font-size: clamp(28px, 3.2vw, 44px);
+      font-size: clamp(30px, 3.3vw, 46px);
       line-height:1.05;
     }
     p{
@@ -126,6 +126,7 @@
       color:var(--muted);
       font-size: 16px;
       line-height:1.5;
+      max-width: 56ch;
     }
     .btn{
       display:inline-flex;
@@ -144,27 +145,15 @@
     }
     .btn:hover{filter: brightness(1.03)}
     .btn:active{transform: translateY(1px)}
-    .small{
-      margin-top:14px;
-      font-size:13px;
-      color: rgba(203,213,225,.92);
-      line-height:1.45;
+    .foot{
+      margin-top:18px;
+      font-size:12px;
+      color: rgba(203,213,225,.65);
     }
-    .small a{
-      color: rgba(203,213,225,.95);
+    .foot a{
+      color: rgba(203,213,225,.7);
       text-decoration: underline;
       text-underline-offset: 3px;
-    }
-    .tip{
-      margin-top:10px;
-      padding:12px 14px;
-      border-radius:14px;
-      border:1px solid var(--border);
-      background: rgba(0,0,0,.18);
-      color: rgba(203,213,225,.95);
-      font-size: 14px;
-      line-height:1.45;
-      max-width: 56ch;
     }
   </style>
 </head>
@@ -173,7 +162,6 @@
   <main class="wrap">
     <section class="inner">
       <div class="img">
-        <!-- Imagen en la raíz del repo -->
         <img src="./saga-vuelve.png"
              alt="La Saga Vuelve"
              width="1200" height="1200"
@@ -185,10 +173,7 @@
 
         <h1>Playlist oficial del show en vivo</h1>
 
-        <p>
-          Seguí la playlist oficial de La Saga: es la lista de canciones que estamos armando para el próximo show.
-          La vamos actualizando de cara al anuncio de fecha y tickets.
-        </p>
+        <p>La estamos armando para el próximo show de La Saga.</p>
 
         <a class="btn"
            href="https://open.spotify.com/playlist/1ylnFl2AbyTPG9ppzfTzxa?utm_source=meta&utm_medium=paid_social&utm_campaign=la_saga_vuelve_playlist"
@@ -198,14 +183,8 @@
           Seguir la playlist en Spotify →
         </a>
 
-        <div class="tip">
-          Tip: si te copa, además de seguirla podés sumar 1–2 temas a una playlist tuya.
-          Suele ser una señal fuerte de afinidad dentro de Spotify.
-        </div>
-
-        <div class="small">
-          Si no tenés Spotify abierto o logueado, puede pedirte iniciar sesión.<br/>
-          <!-- Opcional: enlazá a una política de privacidad simple, por el Pixel -->
+        <!-- Footer mínimo (opcional). Si no tenés privacy.html, podés borrar este bloque. -->
+        <div class="foot">
           <a href="./privacy.html">Privacidad</a>
         </div>
       </div>
