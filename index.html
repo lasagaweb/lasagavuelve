@@ -12,7 +12,6 @@
   <meta property="og:title" content="La Saga — Lista del Reencuentro" />
   <meta property="og:description" content="Sumate para enterarte primero del show que estamos planeando para comienzos del 2026. Guardá también la playlist oficial." />
   <meta property="og:type" content="website" />
-  <!-- Recomendación: reemplazar TU-DOMINIO por tu GitHub Pages o dominio real -->
   <meta property="og:image" content="https://TU-DOMINIO/saga-vuelve.png" />
 
   <!-- Meta Pixel -->
@@ -53,262 +52,338 @@
   </noscript>
 
   <style>
-    :root{
-      --bg1:#0b0f14;
-      --bg2:#3b0a0a;
-
-      --card:#0f172acc;
-      --card2:#111827cc;
-
-      --text:#f3f4f6;
-      --muted:#cbd5e1;
-      --muted2: rgba(203,213,225,.78);
-
-      --btn:#f59e0b;
-      --btnText:#111827;
-
-      --border: rgba(255,255,255,.12);
-      --shadow: rgba(0,0,0,.50);
-
-      --secondaryText: rgba(243,244,246,.92);
+    :root {
+      --bg1: #0b0f14;
+      --bg2: #3b0a0a;
+      --card: rgba(15, 23, 42, 0.8);
+      --card2: rgba(17, 24, 39, 0.8);
+      --text: #f3f4f6;
+      --muted: #cbd5e1;
+      --muted2: rgba(203, 213, 225, 0.78);
+      --btn: #f59e0b;
+      --btnHover: #fbbf24;
+      --btnText: #111827;
+      --border: rgba(255, 255, 255, 0.12);
+      --shadow: rgba(0, 0, 0, 0.50);
+      --accent: #f59e0b;
     }
 
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
-      color:var(--text);
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:24px;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: var(--text);
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
       background:
-        radial-gradient(1200px 600px at 20% 10%, rgba(245,158,11,.25), transparent 60%),
-        radial-gradient(900px 500px at 80% 20%, rgba(239,68,68,.25), transparent 55%),
+        radial-gradient(ellipse 1200px 600px at 20% 10%, rgba(245, 158, 11, 0.2), transparent 60%),
+        radial-gradient(ellipse 900px 500px at 80% 20%, rgba(220, 38, 38, 0.2), transparent 55%),
         linear-gradient(135deg, var(--bg1), var(--bg2));
+      background-attachment: fixed;
+      line-height: 1.5;
     }
 
-    .wrap{
-      width:min(980px, 100%);
+    .wrap {
+      width: min(960px, 100%);
       background: linear-gradient(180deg, var(--card), var(--card2));
-      backdrop-filter: blur(10px);
-      border:1px solid rgba(255,255,255,.12);
-      border-radius:22px;
-      overflow:hidden;
-      box-shadow: 0 18px 60px var(--shadow);
-      position:relative;
-      text-align:left;
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--border);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: 
+        0 20px 60px var(--shadow),
+        inset 0 1px 0 rgba(255, 255, 255, 0.05);
     }
 
-    .wrap:before{
-      content:"";
-      position:absolute;
-      inset:0;
-      pointer-events:none;
-      border-radius:22px;
-      border: 1px solid rgba(255,255,255,.06);
-      mask: linear-gradient(#000,#000);
+    .inner {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 32px;
+      padding: 32px;
+      align-items: center;
     }
 
-    .inner{
-      display:grid;
-      grid-template-columns: 1fr 1.2fr;
-      gap:22px;
-      padding:28px;
-      align-items:center;
-    }
-    @media (max-width: 860px){
-      .inner{grid-template-columns:1fr; padding:20px}
+    @media (max-width: 800px) {
+      .inner {
+        grid-template-columns: 1fr;
+        gap: 24px;
+        padding: 24px;
+      }
     }
 
-    .img{
-      width:100%;
-      border-radius:18px;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.2);
-      overflow:hidden;
+    /* Imagen */
+    .img-container {
+      width: 100%;
       aspect-ratio: 1 / 1;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      box-shadow: 0 12px 28px rgba(0,0,0,.35);
-    }
-    .img img{
-      width:100%;
-      height:100%;
-      object-fit:cover;
-      display:block;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      box-shadow: 0 12px 32px rgba(0, 0, 0, 0.4);
+      background: rgba(0, 0, 0, 0.3);
     }
 
-    .kicker{
-      font-size:13px;
-      letter-spacing:.14em;
-      text-transform:uppercase;
-      color:var(--muted2);
-      margin-bottom:10px;
+    .img-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
-    h1{
-      margin:0 0 12px 0;
-      font-size: clamp(30px, 3.3vw, 46px);
-      line-height:1.05;
+    /* Contenido */
+    .content {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
     }
 
-    p{
-      margin:0;
-      color:var(--muted);
-      font-size:16px;
-      line-height:1.55;
-      max-width: 62ch;
-      text-align:left !important;
-      text-align-last:left !important;
-      letter-spacing: normal;
-      word-spacing: normal;
-      white-space: normal;
-      hyphens: none;
+    .kicker {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--muted2);
     }
 
-    .paraGap{ margin-top: 10px; }
-
-    .btnRow{
-      display:flex;
-      flex-wrap:wrap;
-      gap:12px;
-      margin-top: 18px;
+    h1 {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 700;
+      line-height: 1.1;
+      color: var(--text);
+      margin: 0;
     }
 
-    .btn{
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      padding:14px 18px;
-      border-radius:14px;
-      font-weight:900;
-      text-decoration:none;
-      border:1px solid rgba(0,0,0,.2);
-      width:fit-content;
-      transition: transform .08s ease, filter .12s ease, background .12s ease, border-color .12s ease;
-      cursor:pointer;
-      user-select:none;
-      -webkit-tap-highlight-color: transparent;
+    .intro {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.6;
     }
 
-    .btn.primary{
+    /* Lista de beneficios - CORREGIDA */
+    .benefits {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin: 4px 0;
+    }
+
+    .benefit {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+
+    .benefit-icon {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      margin-top: 2px;
+      background: rgba(34, 197, 94, 0.15);
+      border: 1px solid rgba(34, 197, 94, 0.3);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .benefit-icon svg {
+      width: 12px;
+      height: 12px;
+      color: #22c55e;
+    }
+
+    .benefit-text {
+      flex: 1;
+    }
+
+    .benefit-text strong {
+      color: var(--text);
+      font-weight: 600;
+    }
+
+    /* Botones */
+    .btn-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 8px;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 20px;
+      border-radius: 12px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      white-space: nowrap;
+    }
+
+    .btn-primary {
       background: var(--btn);
       color: var(--btnText);
+      box-shadow: 0 4px 12px rgba(245, 158, 11, 0.3);
     }
 
-    .btn.secondary{
+    .btn-primary:hover {
+      background: var(--btnHover);
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(245, 158, 11, 0.4);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    .btn-secondary {
       background: transparent;
-      color: var(--secondaryText);
-      border: 1px solid rgba(255,255,255,.12);
-    }
-    .btn.secondary:hover{
-      background: rgba(255,255,255,.06);
-      border-color: rgba(255,255,255,.18);
+      color: var(--text);
+      border: 1px solid var(--border);
     }
 
-    .btn:hover{filter: brightness(1.03)}
-    .btn:active{transform: translateY(1px)}
-    .btn:focus-visible{
-      outline: 2px solid rgba(245,158,11,.65);
-      outline-offset: 3px;
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.06);
+      border-color: rgba(255, 255, 255, 0.2);
     }
 
-    .smallNote{
+    .btn:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 2px;
+    }
+
+    /* Nota pequeña */
+    .small-note {
       font-size: 13px;
       color: var(--muted2);
-      margin-top: 10px;
-      line-height: 1.4;
-      text-align:left !important;
-      text-align-last:left !important;
+      line-height: 1.5;
     }
-    .smallNote a{color: var(--text); text-underline-offset: 3px}
+
+    .small-note a {
+      color: var(--text);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
+    .small-note a:hover {
+      color: var(--accent);
+    }
 
     /* Modal */
-    .modalOverlay{
-      position:fixed;
-      inset:0;
-      background: rgba(0,0,0,.62);
-      display:none;
-      align-items:center;
-      justify-content:center;
-      padding: 18px;
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(4px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
       z-index: 9999;
     }
-    .modal{
-      width:min(980px, 100%);
-      height:min(84vh, 820px);
-      background: rgba(17,24,39,.98);
-      border:1px solid rgba(255,255,255,.12);
-      border-radius:18px;
-      overflow:hidden;
-      box-shadow: 0 18px 60px rgba(0,0,0,.55);
-      display:flex;
-      flex-direction:column;
-    }
-    .modalHeader{
-      display:flex;
-      align-items:center;
-      justify-content:space-between;
-      gap:12px;
-      padding:12px 14px;
-      border-bottom:1px solid rgba(255,255,255,.12);
-      background: rgba(0,0,0,.22);
-    }
-    .modalHeader strong{
-      font-size:13px;
-      letter-spacing:.10em;
-      text-transform:uppercase;
-      color: var(--muted2);
-    }
-    .modalHeaderRight{
-      display:flex;
-      gap:10px;
-      align-items:center;
+
+    .modal-overlay.active {
+      display: flex;
     }
 
-    .toggle{
-      display:flex;
-      align-items:center;
-      gap:8px;
+    .modal {
+      width: min(960px, 100%);
+      height: min(85vh, 800px);
+      background: rgba(17, 24, 39, 0.98);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 14px 18px;
+      border-bottom: 1px solid var(--border);
+      background: rgba(0, 0, 0, 0.3);
+    }
+
+    .modal-title {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--muted2);
+    }
+
+    .modal-controls {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .toggle-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
       font-size: 12px;
       color: var(--muted2);
-      user-select:none;
-      white-space:nowrap;
+      cursor: pointer;
+      user-select: none;
     }
-    .toggle input{ transform: translateY(1px); }
 
-    .closeBtn{
-      appearance:none;
-      border:1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.06);
+    .toggle-label input {
+      accent-color: var(--accent);
+    }
+
+    .close-btn {
+      padding: 8px 14px;
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid var(--border);
+      border-radius: 8px;
       color: var(--text);
-      border-radius: 12px;
-      padding: 10px 12px;
-      font-weight: 800;
-      cursor:pointer;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.15s ease;
     }
-    .closeBtn:hover{filter:brightness(1.05)}
 
-    .modalBody{
-      flex:1;
-      background: rgba(0,0,0,.08);
+    .close-btn:hover {
+      background: rgba(255, 255, 255, 0.1);
     }
-    .modalBody iframe{
-      width:100%;
-      height:100%;
-      border:0;
-      display:block;
+
+    .modal-body {
+      flex: 1;
+      background: var(--bg1);
+    }
+
+    .modal-body iframe {
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
       background: #fff;
     }
 
-    /* Hack modo oscuro */
-    .modalBody.formDark{
+    .modal-body.dark-mode {
       background: #0b0f14;
     }
-    .modalBody.formDark iframe{
+
+    .modal-body.dark-mode iframe {
       filter: invert(1) hue-rotate(180deg) contrast(1.05);
     }
   </style>
@@ -317,36 +392,51 @@
 <body>
   <main class="wrap">
     <section class="inner">
-      <div class="img">
+      <div class="img-container">
         <img src="./saga-vuelve.png"
-             alt="La Saga"
+             alt="La Saga Vuelve"
              width="1200" height="1200"
              loading="eager" />
       </div>
 
-      <div>
-        <div class="kicker">La vuelta empezó — todavía sin fecha pública</div>
+      <div class="content">
+        <p class="kicker">La vuelta empezó — todavía sin fecha pública</p>
 
         <h1>Sumate a la Lista del Reencuentro</h1>
 
-        <p>
+        <p class="intro">
           Una lista simple para avisos importantes de <strong>La Saga</strong>.
         </p>
 
-        <p class="paraGap">
-          Enterate primero del <strong>show que estamos planeando para comienzos del 2026</strong>.
-        </p>
+        <div class="benefits">
+          <div class="benefit">
+            <span class="benefit-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </span>
+            <span class="benefit-text">
+              Enterate primero del <strong>show que estamos planeando para comienzos del 2026</strong>.
+            </span>
+          </div>
+          <div class="benefit">
+            <span class="benefit-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"></polyline>
+              </svg>
+            </span>
+            <span class="benefit-text">
+              Dejá tu <strong>celular (opcional)</strong> para WhatsApp cuando tengamos canal oficial.
+            </span>
+          </div>
+        </div>
 
-        <p class="paraGap">
-          Dejá tu <strong>celular (opcional)</strong> para WhatsApp cuando tengamos canal oficial.
-        </p>
-
-        <div class="btnRow">
-          <button class="btn primary" id="openFormBtn" type="button">
+        <div class="btn-row">
+          <button class="btn btn-primary" id="openFormBtn" type="button">
             Sumarme a la Lista del Reencuentro →
           </button>
 
-          <a class="btn secondary"
+          <a class="btn btn-secondary"
              href="https://open.spotify.com/playlist/1ylnFl2AbyTPG9ppzfTzxa?utm_source=landing&utm_medium=owned&utm_campaign=la_saga_vuelve_playlist"
              target="_blank" rel="noopener noreferrer"
              onclick="trackSpotifyPlaylistClick()">
@@ -354,30 +444,30 @@
           </a>
         </div>
 
-        <div class="smallNote">
-          Si preferís, también podés abrir el formulario en una pestaña:
+        <p class="small-note">
+          Si preferís, también podés 
           <a href="https://docs.google.com/forms/d/e/1FAIpQLSdWQhyO_yfo6oM2eE8H91CNV-W_0oScjIzaDJdtzfCIEx4ssQ/viewform?usp=send_form"
              target="_blank" rel="noopener noreferrer"
-             onclick="trackReencuentroFormOpen()">abrir formulario</a>.
-        </div>
+             onclick="trackReencuentroFormOpen()">abrir el formulario en una pestaña</a>.
+        </p>
       </div>
     </section>
   </main>
 
   <!-- Modal Google Form -->
-  <div class="modalOverlay" id="formModal" aria-hidden="true">
+  <div class="modal-overlay" id="formModal" aria-hidden="true">
     <div class="modal" role="dialog" aria-modal="true" aria-label="Lista del Reencuentro">
-      <div class="modalHeader">
-        <strong>Lista del Reencuentro</strong>
-        <div class="modalHeaderRight">
-          <label class="toggle" title="Experimental: invierte el formulario para simular modo oscuro.">
+      <div class="modal-header">
+        <span class="modal-title">Lista del Reencuentro</span>
+        <div class="modal-controls">
+          <label class="toggle-label" title="Invierte colores del formulario para simular modo oscuro">
             <input type="checkbox" id="darkFormToggle" checked />
             Modo oscuro
           </label>
-          <button class="closeBtn" id="closeModalBtn" type="button">Cerrar</button>
+          <button class="close-btn" id="closeModalBtn" type="button">Cerrar</button>
         </div>
       </div>
-      <div class="modalBody formDark" id="modalBody">
+      <div class="modal-body dark-mode" id="modalBody">
         <iframe
           id="googleFormFrame"
           src="https://docs.google.com/forms/d/e/1FAIpQLSdWQhyO_yfo6oM2eE8H91CNV-W_0oScjIzaDJdtzfCIEx4ssQ/viewform?embedded=true"
@@ -389,39 +479,41 @@
   </div>
 
   <script>
-    (function(){
+    (function() {
       const openBtn = document.getElementById('openFormBtn');
       const modal = document.getElementById('formModal');
       const closeBtn = document.getElementById('closeModalBtn');
-
       const toggle = document.getElementById('darkFormToggle');
       const modalBody = document.getElementById('modalBody');
 
-      function openModal(){
+      function openModal() {
         trackReencuentroFormOpen();
-        modal.style.display = 'flex';
+        modal.classList.add('active');
         modal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
       }
-      function closeModal(){
-        modal.style.display = 'none';
+
+      function closeModal() {
+        modal.classList.remove('active');
         modal.setAttribute('aria-hidden', 'true');
+        document.body.style.overflow = '';
       }
 
       openBtn.addEventListener('click', openModal);
       closeBtn.addEventListener('click', closeModal);
 
-      modal.addEventListener('click', function(e){
-        if(e.target === modal) closeModal();
+      modal.addEventListener('click', function(e) {
+        if (e.target === modal) closeModal();
       });
 
-      document.addEventListener('keydown', function(e){
-        if(e.key === 'Escape' && modal.style.display === 'flex'){
+      document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape' && modal.classList.contains('active')) {
           closeModal();
         }
       });
 
-      toggle.addEventListener('change', function(){
-        modalBody.classList.toggle('formDark', !!toggle.checked);
+      toggle.addEventListener('change', function() {
+        modalBody.classList.toggle('dark-mode', toggle.checked);
       });
     })();
   </script>
