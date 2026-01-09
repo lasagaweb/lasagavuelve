@@ -100,6 +100,9 @@
       overflow:hidden;
       box-shadow: 0 18px 60px var(--shadow);
       position:relative;
+
+      /* clave: evitamos cualquier justificado heredado */
+      text-align: left;
     }
 
     .wrap:before{
@@ -162,6 +165,10 @@
       font-size:16px;
       line-height:1.55;
       max-width: 62ch;
+
+      /* clave: nunca justificar acá */
+      text-align: left;
+      text-align-last: left;
     }
 
     .bullets{
@@ -170,13 +177,21 @@
       margin: 12px 0 18px 0;
       color: var(--muted);
       display:grid;
-      gap:8px;
+      gap:10px;
       max-width: 62ch;
+
+      /* clave: evita los espacios gigantes */
+      text-align: left;
+      text-align-last: left;
     }
     .bullets li{
       display:flex;
-      gap:10px;
+      gap:12px;
       align-items:flex-start;
+
+      /* clave: evita justificado dentro del li */
+      text-align: left;
+      text-align-last: left;
     }
     .check{
       width:18px;
@@ -188,9 +203,16 @@
       align-items:center;
       justify-content:center;
       flex: 0 0 18px;
-      margin-top:2px;
+      margin-top:3px;
       font-size:12px;
       color: rgba(245,158,11,.95);
+    }
+    .bulletText{
+      display:block;
+      line-height:1.45;
+      /* más natural el wrapping */
+      word-break: normal;
+      overflow-wrap: anywhere;
     }
 
     .btnRow{
@@ -221,7 +243,6 @@
       color: var(--btnText);
     }
 
-    /* secundario más discreto */
     .btn.secondary{
       background: transparent;
       color: var(--secondaryText);
@@ -244,6 +265,8 @@
       color: var(--muted2);
       margin-top: 10px;
       line-height: 1.4;
+      text-align: left;
+      text-align-last: left;
     }
     .smallNote a{color: var(--text); text-underline-offset: 3px}
 
@@ -355,8 +378,14 @@
         </p>
 
         <ul class="bullets">
-          <li><span class="check">✓</span>Enterate primero del <strong>show que estamos planeando para comienzos del 2026</strong>.</li>
-          <li><span class="check">✓</span>Dejá tu <strong>celular (opcional)</strong> para WhatsApp cuando tengamos canal oficial.</li>
+          <li>
+            <span class="check" aria-hidden="true">✓</span>
+            <span class="bulletText">Enterate primero del <strong>show que estamos planeando para comienzos del 2026</strong>.</span>
+          </li>
+          <li>
+            <span class="check" aria-hidden="true">✓</span>
+            <span class="bulletText">Dejá tu <strong>celular (opcional)</strong> para WhatsApp cuando tengamos canal oficial.</span>
+          </li>
         </ul>
 
         <div class="btnRow">
