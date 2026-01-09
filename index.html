@@ -141,7 +141,7 @@
     .content {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 10px;
     }
 
     .kicker {
@@ -166,44 +166,11 @@
       line-height: 1.6;
     }
 
-    /* Lista de beneficios - CORREGIDA */
-    .benefits {
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      margin: 4px 0;
-    }
-
-    .benefit {
-      display: flex;
-      align-items: flex-start;
-      gap: 12px;
+    /* Texto de beneficios */
+    .benefit-text {
       font-size: 15px;
       color: var(--muted);
       line-height: 1.5;
-    }
-
-    .benefit-icon {
-      flex-shrink: 0;
-      width: 20px;
-      height: 20px;
-      margin-top: 2px;
-      background: rgba(34, 197, 94, 0.15);
-      border: 1px solid rgba(34, 197, 94, 0.3);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .benefit-icon svg {
-      width: 12px;
-      height: 12px;
-      color: #22c55e;
-    }
-
-    .benefit-text {
-      flex: 1;
     }
 
     .benefit-text strong {
@@ -408,28 +375,13 @@
           Una lista simple para avisos importantes de <strong>La Saga</strong>.
         </p>
 
-        <div class="benefits">
-          <div class="benefit">
-            <span class="benefit-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-            </span>
-            <span class="benefit-text">
-              Enterate primero del <strong>show que estamos planeando para comienzos del 2026</strong>.
-            </span>
-          </div>
-          <div class="benefit">
-            <span class="benefit-icon">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
-                <polyline points="20 6 9 17 4 12"></polyline>
-              </svg>
-            </span>
-            <span class="benefit-text">
-              Dejá tu <strong>celular (opcional)</strong> para WhatsApp cuando tengamos canal oficial.
-            </span>
-          </div>
-        </div>
+        <p class="benefit-text">
+          Enterate primero del <strong>show que estamos planeando para comienzos del 2026</strong>.
+        </p>
+
+        <p class="benefit-text">
+          Además, podés guardar la <strong>playlist del show en Spotify</strong> para ir practicando.
+        </p>
 
         <div class="btn-row">
           <button class="btn btn-primary" id="openFormBtn" type="button">
