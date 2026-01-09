@@ -3,15 +3,16 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>La Saga Vuelve — Playlist oficial</title>
+  <title>La Saga Vuelve — Lista del Reencuentro</title>
 
-  <meta name="description" content="Seguí la playlist oficial del show en vivo de La Saga." />
+  <meta name="description" content="Sumate a la Lista del Reencuentro de La Saga para enterarte primero del show que estamos planeando para comienzos del 2026. Guardá también la playlist oficial." />
   <meta name="theme-color" content="#0b0f14" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="La Saga Vuelve — Playlist oficial" />
-  <meta property="og:description" content="Seguí la playlist oficial del show en vivo de La Saga." />
+  <meta property="og:title" content="La Saga Vuelve — Lista del Reencuentro" />
+  <meta property="og:description" content="Sumate para enterarte primero del show que estamos planeando para comienzos del 2026. Guardá también la playlist oficial." />
   <meta property="og:type" content="website" />
+  <!-- Recomendación: reemplazar TU-DOMINIO por tu GitHub Pages o dominio real -->
   <meta property="og:image" content="https://TU-DOMINIO/saga-vuelve.png" />
 
   <!-- Meta Pixel -->
@@ -36,6 +37,14 @@
         });
       } catch(e){}
     }
+
+    function trackReencuentroFormOpen() {
+      try {
+        fbq('trackCustom','ReencuentroFormOpen',{
+          list_name:'Lista del Reencuentro'
+        });
+      } catch(e){}
+    }
   </script>
 
   <noscript>
@@ -53,6 +62,8 @@
       --btn:#f59e0b;
       --btnText:#111827;
       --border: rgba(255,255,255,.12);
+      --secondaryBg: rgba(255,255,255,.06);
+      --secondaryText: #f3f4f6;
     }
     *{box-sizing:border-box}
     body{
@@ -118,11 +129,17 @@
       line-height:1.05;
     }
     p{
-      margin:0 0 20px 0;
+      margin:0 0 18px 0;
       color:var(--muted);
       font-size:16px;
       line-height:1.5;
-      max-width: 58ch;
+      max-width: 62ch;
+    }
+    .btnRow{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top: 8px;
     }
     .btn{
       display:inline-flex;
@@ -132,14 +149,89 @@
       border-radius:14px;
       font-weight:900;
       text-decoration:none;
-      background: var(--btn);
-      color: var(--btnText);
       border:1px solid rgba(0,0,0,.2);
       width:fit-content;
       transition: transform .08s ease, filter .12s ease;
+      cursor:pointer;
+    }
+    .btn.primary{
+      background: var(--btn);
+      color: var(--btnText);
+    }
+    .btn.secondary{
+      background: var(--secondaryBg);
+      color: var(--secondaryText);
+      border: 1px solid var(--border);
     }
     .btn:hover{filter: brightness(1.03)}
     .btn:active{transform: translateY(1px)}
+
+    /* Modal */
+    .modalOverlay{
+      position:fixed;
+      inset:0;
+      background: rgba(0,0,0,.62);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding: 18px;
+      z-index: 9999;
+    }
+    .modal{
+      width:min(980px, 100%);
+      height:min(82vh, 780px);
+      background: rgba(17,24,39,.98);
+      border:1px solid var(--border);
+      border-radius:18px;
+      overflow:hidden;
+      box-shadow: 0 18px 60px rgba(0,0,0,.55);
+      display:flex;
+      flex-direction:column;
+    }
+    .modalHeader{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:12px 14px;
+      border-bottom:1px solid var(--border);
+      background: rgba(0,0,0,.22);
+    }
+    .modalHeader strong{
+      font-size:14px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      color: var(--muted);
+    }
+    .closeBtn{
+      appearance:none;
+      border:1px solid var(--border);
+      background: rgba(255,255,255,.06);
+      color: var(--text);
+      border-radius: 12px;
+      padding: 10px 12px;
+      font-weight: 800;
+      cursor:pointer;
+    }
+    .closeBtn:hover{filter:brightness(1.05)}
+    .modalBody{
+      flex:1;
+      background: rgba(0,0,0,.08);
+    }
+    .modalBody iframe{
+      width:100%;
+      height:100%;
+      border:0;
+      display:block;
+      background: #fff; /* Google Forms */
+    }
+    .smallNote{
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 12px;
+      line-height: 1.4;
+    }
+    .smallNote a{color: var(--text)}
   </style>
 </head>
 
@@ -154,24 +246,90 @@
       </div>
 
       <div>
-        <div class="kicker">Todavía no hay fecha ni tickets</div>
+        <div class="kicker">La vuelta empezó — todavía sin fecha pública</div>
 
-        <h1>Playlist oficial del show en vivo</h1>
+        <h1>Sumate a la Lista del Reencuentro</h1>
 
         <p>
-          Esta es la lista de canciones que estamos armando para el próximo show.
-          Seguí la playlist y, si te copa, sumá algún tema a una playlist tuya.
-          La iremos ajustando de cara a la vuelta.
+          Queremos avisarte primero cuando anunciemos novedades importantes de <strong>La Saga Vuelve</strong>.
+          Sumate a la lista para enterarte antes que nadie del <strong>show que estamos planeando para comienzos del 2026</strong>.
+          (El celular es opcional, para WhatsApp en el futuro.)
         </p>
 
-        <a class="btn"
-           href="https://open.spotify.com/playlist/1ylnFl2AbyTPG9ppzfTzxa?utm_source=meta&utm_medium=paid_social&utm_campaign=la_saga_vuelve_playlist"
-           target="_blank" rel="noopener"
-           onclick="trackSpotifyPlaylistClick()">
-          Seguir la playlist en Spotify →
-        </a>
+        <div class="btnRow">
+          <!-- CTA primario: abre modal con el Google Form embebido -->
+          <button class="btn primary" id="openFormBtn" type="button">
+            Sumarme a la Lista del Reencuentro →
+          </button>
+
+          <!-- CTA secundario: playlist -->
+          <a class="btn secondary"
+             href="https://open.spotify.com/playlist/1ylnFl2AbyTPG9ppzfTzxa?utm_source=landing&utm_medium=owned&utm_campaign=la_saga_vuelve_playlist"
+             target="_blank" rel="noopener noreferrer"
+             onclick="trackSpotifyPlaylistClick()">
+            Guardar la playlist del show →
+          </a>
+        </div>
+
+        <div class="smallNote">
+          Si preferís, también podés abrir el formulario en una pestaña:
+          <a href="https://docs.google.com/forms/d/e/1FAIpQLSdWQhyO_yfo6oM2eE8H91CNV-W_0oScjIzaDJdtzfCIEx4ssQ/viewform?usp=send_form"
+             target="_blank" rel="noopener noreferrer"
+             onclick="trackReencuentroFormOpen()">abrir formulario</a>.
+        </div>
       </div>
     </section>
   </main>
+
+  <!-- Modal Google Form -->
+  <div class="modalOverlay" id="formModal" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-label="Lista del Reencuentro">
+      <div class="modalHeader">
+        <strong>Lista del Reencuentro</strong>
+        <button class="closeBtn" id="closeModalBtn" type="button">Cerrar</button>
+      </div>
+      <div class="modalBody">
+        <iframe
+          id="googleFormFrame"
+          src="https://docs.google.com/forms/d/e/1FAIpQLSdWQhyO_yfo6oM2eE8H91CNV-W_0oScjIzaDJdtzfCIEx4ssQ/viewform?embedded=true"
+          title="Formulario — Lista del Reencuentro"
+          loading="lazy">
+        </iframe>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function(){
+      const openBtn = document.getElementById('openFormBtn');
+      const modal = document.getElementById('formModal');
+      const closeBtn = document.getElementById('closeModalBtn');
+
+      function openModal(){
+        trackReencuentroFormOpen();
+        modal.style.display = 'flex';
+        modal.setAttribute('aria-hidden', 'false');
+      }
+      function closeModal(){
+        modal.style.display = 'none';
+        modal.setAttribute('aria-hidden', 'true');
+      }
+
+      openBtn.addEventListener('click', openModal);
+      closeBtn.addEventListener('click', closeModal);
+
+      // Cerrar clickeando el fondo
+      modal.addEventListener('click', function(e){
+        if(e.target === modal) closeModal();
+      });
+
+      // Cerrar con ESC
+      document.addEventListener('keydown', function(e){
+        if(e.key === 'Escape' && modal.style.display === 'flex'){
+          closeModal();
+        }
+      });
+    })();
+  </script>
 </body>
 </html>
