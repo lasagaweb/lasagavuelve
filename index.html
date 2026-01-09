@@ -56,15 +56,25 @@
     :root{
       --bg1:#0b0f14;
       --bg2:#3b0a0a;
-      --card:#111827cc;
+
+      --card:#0f172acc;
+      --card2:#111827cc;
+
       --text:#f3f4f6;
       --muted:#cbd5e1;
+      --muted2: rgba(203,213,225,.78);
+
       --btn:#f59e0b;
       --btnText:#111827;
+
       --border: rgba(255,255,255,.12);
-      --secondaryBg: rgba(255,255,255,.06);
-      --secondaryText: #f3f4f6;
+      --border2: rgba(245,158,11,.22);
+
+      --secondaryText: rgba(243,244,246,.92);
+
+      --shadow: rgba(0,0,0,.50);
     }
+
     *{box-sizing:border-box}
     body{
       margin:0;
@@ -80,15 +90,28 @@
         radial-gradient(900px 500px at 80% 20%, rgba(239,68,68,.25), transparent 55%),
         linear-gradient(135deg, var(--bg1), var(--bg2));
     }
+
     .wrap{
       width:min(980px, 100%);
-      background: var(--card);
+      background: linear-gradient(180deg, var(--card), var(--card2));
       backdrop-filter: blur(10px);
       border:1px solid var(--border);
       border-radius:22px;
       overflow:hidden;
-      box-shadow: 0 18px 60px rgba(0,0,0,.45);
+      box-shadow: 0 18px 60px var(--shadow);
+      position:relative;
     }
+
+    .wrap:before{
+      content:"";
+      position:absolute;
+      inset:0;
+      pointer-events:none;
+      border-radius:22px;
+      border: 1px solid rgba(255,255,255,.06);
+      mask: linear-gradient(#000,#000);
+    }
+
     .inner{
       display:grid;
       grid-template-columns: 1fr 1.2fr;
@@ -99,6 +122,7 @@
     @media (max-width: 860px){
       .inner{grid-template-columns:1fr; padding:20px}
     }
+
     .img{
       width:100%;
       border-radius:18px;
@@ -109,6 +133,7 @@
       display:flex;
       align-items:center;
       justify-content:center;
+      box-shadow: 0 12px 28px rgba(0,0,0,.35);
     }
     .img img{
       width:100%;
@@ -116,31 +141,65 @@
       object-fit:cover;
       display:block;
     }
+
     .kicker{
-      font-size:14px;
-      letter-spacing:.12em;
+      font-size:13px;
+      letter-spacing:.14em;
       text-transform:uppercase;
-      color:var(--muted);
+      color:var(--muted2);
       margin-bottom:10px;
     }
+
     h1{
       margin:0 0 12px 0;
       font-size: clamp(30px, 3.3vw, 46px);
       line-height:1.05;
     }
+
     p{
-      margin:0 0 18px 0;
+      margin:0 0 12px 0;
       color:var(--muted);
       font-size:16px;
-      line-height:1.5;
+      line-height:1.55;
       max-width: 62ch;
     }
+
+    .bullets{
+      list-style:none;
+      padding:0;
+      margin: 12px 0 18px 0;
+      color: var(--muted);
+      display:grid;
+      gap:8px;
+      max-width: 62ch;
+    }
+    .bullets li{
+      display:flex;
+      gap:10px;
+      align-items:flex-start;
+    }
+    .check{
+      width:18px;
+      height:18px;
+      border-radius:6px;
+      background: rgba(245,158,11,.16);
+      border:1px solid var(--border2);
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      flex: 0 0 18px;
+      margin-top:2px;
+      font-size:12px;
+      color: rgba(245,158,11,.95);
+    }
+
     .btnRow{
       display:flex;
       flex-wrap:wrap;
       gap:12px;
       margin-top: 8px;
     }
+
     .btn{
       display:inline-flex;
       align-items:center;
@@ -151,20 +210,42 @@
       text-decoration:none;
       border:1px solid rgba(0,0,0,.2);
       width:fit-content;
-      transition: transform .08s ease, filter .12s ease;
+      transition: transform .08s ease, filter .12s ease, background .12s ease, border-color .12s ease;
       cursor:pointer;
+      user-select:none;
+      -webkit-tap-highlight-color: transparent;
     }
+
     .btn.primary{
       background: var(--btn);
       color: var(--btnText);
     }
+
+    /* secundario más discreto */
     .btn.secondary{
-      background: var(--secondaryBg);
+      background: transparent;
       color: var(--secondaryText);
       border: 1px solid var(--border);
     }
+    .btn.secondary:hover{
+      background: rgba(255,255,255,.06);
+      border-color: rgba(255,255,255,.18);
+    }
+
     .btn:hover{filter: brightness(1.03)}
     .btn:active{transform: translateY(1px)}
+    .btn:focus-visible{
+      outline: 2px solid rgba(245,158,11,.65);
+      outline-offset: 3px;
+    }
+
+    .smallNote{
+      font-size: 13px;
+      color: var(--muted2);
+      margin-top: 10px;
+      line-height: 1.4;
+    }
+    .smallNote a{color: var(--text); text-underline-offset: 3px}
 
     /* Modal */
     .modalOverlay{
@@ -179,7 +260,7 @@
     }
     .modal{
       width:min(980px, 100%);
-      height:min(82vh, 780px);
+      height:min(84vh, 820px);
       background: rgba(17,24,39,.98);
       border:1px solid var(--border);
       border-radius:18px;
@@ -198,11 +279,28 @@
       background: rgba(0,0,0,.22);
     }
     .modalHeader strong{
-      font-size:14px;
-      letter-spacing:.08em;
+      font-size:13px;
+      letter-spacing:.10em;
       text-transform:uppercase;
-      color: var(--muted);
+      color: var(--muted2);
     }
+    .modalHeaderRight{
+      display:flex;
+      gap:10px;
+      align-items:center;
+    }
+
+    .toggle{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      font-size: 12px;
+      color: var(--muted2);
+      user-select:none;
+      white-space:nowrap;
+    }
+    .toggle input{ transform: translateY(1px); }
+
     .closeBtn{
       appearance:none;
       border:1px solid var(--border);
@@ -214,6 +312,7 @@
       cursor:pointer;
     }
     .closeBtn:hover{filter:brightness(1.05)}
+
     .modalBody{
       flex:1;
       background: rgba(0,0,0,.08);
@@ -225,13 +324,14 @@
       display:block;
       background: #fff; /* Google Forms */
     }
-    .smallNote{
-      font-size: 13px;
-      color: var(--muted);
-      margin-top: 12px;
-      line-height: 1.4;
+
+    /* Hack modo oscuro (experimental) */
+    .modalBody.formDark{
+      background: #0b0f14;
     }
-    .smallNote a{color: var(--text)}
+    .modalBody.formDark iframe{
+      filter: invert(1) hue-rotate(180deg) contrast(1.05);
+    }
   </style>
 </head>
 
@@ -251,18 +351,19 @@
         <h1>Sumate a la Lista del Reencuentro</h1>
 
         <p>
-          Queremos avisarte primero cuando anunciemos novedades importantes de <strong>La Saga Vuelve</strong>.
-          Sumate a la lista para enterarte antes que nadie del <strong>show que estamos planeando para comienzos del 2026</strong>.
-          (El celular es opcional, para WhatsApp en el futuro.)
+          Una lista simple para avisos importantes de <strong>La Saga Vuelve</strong>.
         </p>
 
+        <ul class="bullets">
+          <li><span class="check">✓</span>Enterate primero del <strong>show que estamos planeando para comienzos del 2026</strong>.</li>
+          <li><span class="check">✓</span>Dejá tu <strong>celular (opcional)</strong> para WhatsApp cuando tengamos canal oficial.</li>
+        </ul>
+
         <div class="btnRow">
-          <!-- CTA primario: abre modal con el Google Form embebido -->
           <button class="btn primary" id="openFormBtn" type="button">
             Sumarme a la Lista del Reencuentro →
           </button>
 
-          <!-- CTA secundario: playlist -->
           <a class="btn secondary"
              href="https://open.spotify.com/playlist/1ylnFl2AbyTPG9ppzfTzxa?utm_source=landing&utm_medium=owned&utm_campaign=la_saga_vuelve_playlist"
              target="_blank" rel="noopener noreferrer"
@@ -286,9 +387,15 @@
     <div class="modal" role="dialog" aria-modal="true" aria-label="Lista del Reencuentro">
       <div class="modalHeader">
         <strong>Lista del Reencuentro</strong>
-        <button class="closeBtn" id="closeModalBtn" type="button">Cerrar</button>
+        <div class="modalHeaderRight">
+          <label class="toggle" title="Experimental: invierte el formulario para simular modo oscuro.">
+            <input type="checkbox" id="darkFormToggle" checked />
+            Modo oscuro
+          </label>
+          <button class="closeBtn" id="closeModalBtn" type="button">Cerrar</button>
+        </div>
       </div>
-      <div class="modalBody">
+      <div class="modalBody formDark" id="modalBody">
         <iframe
           id="googleFormFrame"
           src="https://docs.google.com/forms/d/e/1FAIpQLSdWQhyO_yfo6oM2eE8H91CNV-W_0oScjIzaDJdtzfCIEx4ssQ/viewform?embedded=true"
@@ -305,6 +412,9 @@
       const modal = document.getElementById('formModal');
       const closeBtn = document.getElementById('closeModalBtn');
 
+      const toggle = document.getElementById('darkFormToggle');
+      const modalBody = document.getElementById('modalBody');
+
       function openModal(){
         trackReencuentroFormOpen();
         modal.style.display = 'flex';
@@ -318,16 +428,18 @@
       openBtn.addEventListener('click', openModal);
       closeBtn.addEventListener('click', closeModal);
 
-      // Cerrar clickeando el fondo
       modal.addEventListener('click', function(e){
         if(e.target === modal) closeModal();
       });
 
-      // Cerrar con ESC
       document.addEventListener('keydown', function(e){
         if(e.key === 'Escape' && modal.style.display === 'flex'){
           closeModal();
         }
+      });
+
+      toggle.addEventListener('change', function(){
+        modalBody.classList.toggle('formDark', !!toggle.checked);
       });
     })();
   </script>
